@@ -10,8 +10,9 @@ bbox={'left':340, 'top': 114, 'width': 600, 'height': 200}
 begin = time()
 while True:
     bbox['left'], bbox['top'] = position()
-    bbox['left'] = min(size()[0]-bbox['width'],bbox['left'])
-    bbox['top'] = min(size()[0]-bbox['height'],bbox['top'])
+    bbox['left'] = min(size()[0]-bbox['width']-1,bbox['left'])
+    bbox['top'] = min(size()[1]-bbox['height']-1,bbox['top'])
+    print(bbox)
     with mss() as sct:
         mss_im = sct.grab(bbox)
     im = np.array(mss_im.pixels,np.uint8)
