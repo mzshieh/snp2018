@@ -1,11 +1,12 @@
 # NCTU Scratch and Python, 2018 Spring
 
 +   Instructor: [Min-Zheng Shieh](mailto:mzshieh@nctu.edu.tw) mzshieh@nctu.edu.tw
-+   Teaching Assistants: 吳宗達、周玉鑫 
++   Teaching Assistants: [吳宗達](mailto:edison1998402@gmail.com)、[周玉鑫](mailto:yqkqknct@gmail.com) 
 
 ## Course Objectives
 
 +   Learn the fundamentals of imperative programming
+	+ Example: [Origami](https://hackmd.io/s/HyKMpeS_G)
 +   Learn the nature of computers
 
 ## References
@@ -22,7 +23,7 @@
 
 ## Scratch Lecture Notes
 
-The notes will be updated during the semester.
++ [Lecture 1](https://hackmd.io/s/HyKMpeS_G)
 
 ## Python Lecture Notes
 
@@ -34,7 +35,9 @@ There will be some quizzes which do not affect your score.
 
 ## Tutorial
 
-+   Python package installation (Work in progress)
+### Python package installation
++ [Windows](https://hackmd.io/s/SkBB5Kjwz)
++ [Mac OS X](https://hackmd.io/s/HJe4WpzOG)
 
 ## Term Poject
 
