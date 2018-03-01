@@ -6,7 +6,7 @@
 ## Course Objectives
 
 +   Learn the fundamentals of imperative programming
-	+ Example: [Origami](https://hackmd.io/s/HyKMpeS_G)
+	+ Example: [Origami](https://www.youtube.com/watch?v=wSesWQ-51ZM)
 +   Learn the nature of computers
 
 ## References
