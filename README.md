@@ -38,6 +38,7 @@ There will be some quizzes which do not affect your score.
 ### Python package installation
 + [Windows](https://hackmd.io/s/SkBB5Kjwz)
 + [Mac OS X](https://hackmd.io/s/HJe4WpzOG)
++ Test: [Dinosaur Jump](http://www.trex-game.skipser.com/)
 
 ## Term Poject
 
