@@ -24,6 +24,7 @@
 ## Scratch Lecture Notes
 
 + [Lecture 1](https://hackmd.io/s/HyKMpeS_G)
++ [Lecture 2](https://hackmd.io/s/Syx-URECOM)
 
 ## Python Lecture Notes
 
