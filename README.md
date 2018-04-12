@@ -28,7 +28,7 @@
 
 ## Python Lecture Notes
 
-The notes will be updated during the semester.
++ [Lecture 1](https://hackmd.io/s/Hy36wNnsf)
 
 ## Quiz
 
