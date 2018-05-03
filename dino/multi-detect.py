@@ -30,7 +30,7 @@ while True:
     loc = np.where( result >= threshold)
     for pt in zip(*loc[::-1]):
         cv.rectangle(im, pt, (pt[0] + dino.shape[0], pt[1] + dino.shape[1]), (0,255,0), 2)
-        print('->', pt)
+        print('->', pt, result[pt[::-1]])
     # end Multiple matching
     
     cv.imshow('bbox', im)
