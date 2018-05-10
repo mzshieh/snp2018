@@ -30,6 +30,7 @@
 
 + [Lecture 1](https://hackmd.io/s/Hy36wNnsf)
 + [Lecture 2](https://hackmd.io/s/Skvpa3A3M)
++ [Lecture 3](https://hackmd.io/s/HksNDHW0G)
 
 ## Quiz
 
@@ -46,6 +47,11 @@ There will be some quizzes which do not affect your score.
 
 + Scratch part: Create a 2-player game or a party game
 + Python part: A game agent using `pyautogui` and `opencv`
+	+ Candidate 1: Get 1000+ in [Game](http://i-gameworld.com/games/gi2172.php)
+    + Candidate 2: Get 7000+ in [Game](http://i-gameworld.com/games/ga1191.php)
+    + Your own candidate
+    + Propose your term project plan on May 24.
++   [ToolKit Manual](https://hackmd.io/s/HJs_LEC2z)
 
 ## Grading Policy
 
