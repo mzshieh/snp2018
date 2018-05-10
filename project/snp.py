@@ -70,7 +70,7 @@ def screenshot(dino, region):
     result = cv.matchTemplate(im, dino, cv.TM_CCOEFF_NORMED)
     return result
 
-def locateOnScreen(dino, threshold=0.87, region=(0,0,600,200)):
+def locateOnScreen(dino, threshold=0.87, region=None):
     if region == None: region = (0,0)+size()
     if type(dino) is not np.ndarray :
         dino = cv.imread(dino,cv.IMREAD_COLOR) # BGR Color
@@ -83,14 +83,14 @@ def locateOnScreen(dino, threshold=0.87, region=(0,0,600,200)):
     else:
         return None
 
-def locateCenterOnScreen(dino, threshold=0.87, region=(0,0,600,200)):
+def locateCenterOnScreen(dino, threshold=0.87, region=None):
     if region == None: region = (0,0)+size()
     p = locateOnScreen(dino,threshold,region)
     if p != None:
         p = ( p[0]+p[2]//2, p[1]+p[3]//2 )
     return p
 
-def locateAllOnScreen(dino, threshold=0.87, region=(0,0,600,200)):
+def locateAllOnScreen(dino, threshold=0.87, region=None):
     if region == None: region = (0,0)+size()
     if type(dino) is not np.ndarray :
         dino = cv.imread(dino,cv.IMREAD_COLOR) # BGR Color
