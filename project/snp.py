@@ -54,18 +54,31 @@ def get_float():
         return f
     
 from mss import mss
+from PIL import Image
 import cv2 as cv
 import numpy as np
 
-
-def screenshot(dino, region):
-    bbox={'left': region[0], 'top': region[1], 'width': region[2], 'height': region[3]} # detect box
+def screenshot(region=None, **kwargs):
+    im = None
+    monitors = None
+    if region == None:
+        region = kwargs.get('region')
+    
     with mss() as sct:
-        mss_im = sct.grab(bbox)
-    im = np.array(mss_im.pixels,np.uint8)
-    im = cv.cvtColor(im, cv.COLOR_RGB2BGR)
-    result = cv.matchTemplate(im, dino, cv.TM_CCOEFF_NORMED)
-    return result
+
+        # Region to capture
+        monitor = sct.monitors[1]
+        if region != None:
+            monitor['left'] = int(region[0])
+            monitor['top'] = int(region[1])
+            monitor['width'] = int(region[2])
+            monitor['height'] = int(region[3])
+
+        # Get pixels on image
+        sct_img = sct.grab(monitor)
+        im = Image.frombytes('RGBA', sct_img.size, bytes(sct_img.raw), 'raw', 'BGRA')
+        im = im.convert('RGB')
+    return im
 
 def locateOnScreen(dino, threshold=0.87, region=(0,0,600,200)):
     if type(dino) is not np.ndarray :
