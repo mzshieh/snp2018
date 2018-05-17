@@ -54,49 +54,63 @@ def get_float():
         return f
     
 from mss import mss
-from PIL import Image
 import cv2 as cv
 import numpy as np
 from pyautogui import size
 
-def screenshot(dino, region):
-    bbox={'left': region[0], 'top': region[1], 'width': region[2], 'height': region[3]} # detect box
+
+def getMatchTemplate(img, region):
+    # detect box
+    bbox={'left': region[0], 'top': region[1], 'width': region[2], 'height': region[3]}
     
     with mss() as sct:
         mss_im = sct.grab(bbox)
     im = np.array(mss_im.pixels,np.uint8)
     im = cv.cvtColor(im, cv.COLOR_RGB2BGR)
-    cv.imshow('bbox', im)
-    result = cv.matchTemplate(im, dino, cv.TM_CCOEFF_NORMED)
+    result = cv.matchTemplate(im, img, cv.TM_CCOEFF_NORMED)
     return result
 
-def locateOnScreen(dino, threshold=0.87, region=None):
-    if region == None: region = (0,0)+size()
-    if type(dino) is not np.ndarray :
-        dino = cv.imread(dino,cv.IMREAD_COLOR) # BGR Color
+def locateOnScreen(img, threshold=0.87, region=None):
+    # init region
+    if region == None:
+        region = (0,0)+size()
+        
+    # faster read img
+    if type(img) is not np.ndarray :
+        img = cv.imread(img,cv.IMREAD_COLOR) # BGR Color
     
-    result = screenshot(dino,region)
+    result = getMatchTemplate(img,region)
+    
+    # get the most similar
     _minVal, maxVal, _minLoc, maxLoc = cv.minMaxLoc(result, None)
     
     if maxVal >= threshold:
-        return ( maxLoc[0]+region[0], maxLoc[1]+region[1], dino.shape[0], dino.shape[1] )
+        return ( maxLoc[0]+region[0], maxLoc[1]+region[1], img.shape[0], img.shape[1] )
     else:
         return None
 
-def locateCenterOnScreen(dino, threshold=0.87, region=None):
-    if region == None: region = (0,0)+size()
-    p = locateOnScreen(dino,threshold,region)
+def locateCenterOnScreen(img, threshold=0.87, region=None):
+    # init region
+    if region == None:
+        region = (0,0)+size()
+    
+    # get the most similar 
+    p = locateOnScreen(img,threshold,region)
     if p != None:
-        p = ( p[0]+p[2]//2, p[1]+p[3]//2 )
+        p = ( p[0]+p[2]//2, p[1]+p[3]//2 ) # locate on center
     return p
 
-def locateAllOnScreen(dino, threshold=0.87, region=None):
-    if region == None: region = (0,0)+size()
-    if type(dino) is not np.ndarray :
-        dino = cv.imread(dino,cv.IMREAD_COLOR) # BGR Color
+def locateAllOnScreen(img, threshold=0.87, region=None):
+    # init region
+    if region == None:
+        region = (0,0)+size()
     
-    result = screenshot(dino,region)
+    # faster read img
+    if type(img) is not np.ndarray :
+        img = cv.imread(img,cv.IMREAD_COLOR) # BGR Color
+    
+    result = getMatchTemplate(img,region)
     loc = np.where( result >= threshold )
     
     for pt in zip(*loc[::-1]):
-        yield( (region[0]+pt[0], region[1]+pt[1], dino.shape[0], dino.shape[1]) )
+        yield( (region[0]+pt[0], region[1]+pt[1], img.shape[0], img.shape[1]) )
