@@ -97,7 +97,7 @@ def locateCenterOnScreen(img, threshold=0.87, region=None):
     # get the most similar 
     p = locateOnScreen(img,threshold,region)
     if p != None:
-        p = ( p[0]+p[2]//2, p[1]+p[3]//2 ) # locate on center
+        p = ( p[0]+p[3]//2, p[1]+p[2]//2 ) # locate on center
     return p
 
 def locateAllOnScreen(img, threshold=0.87, region=None):
