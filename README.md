@@ -31,6 +31,7 @@
 + [Lecture 1](https://hackmd.io/s/Hy36wNnsf)
 + [Lecture 2](https://hackmd.io/s/Skvpa3A3M)
 + [Lecture 3](https://hackmd.io/s/HksNDHW0G)
++ [Selenium 快速入門](https://hackmd.io/s/rJlCKXg1m)
 
 ## Quiz
 
