@@ -85,7 +85,7 @@ def locateOnScreen(img, threshold=0.87, region=None):
     _minVal, maxVal, _minLoc, maxLoc = cv.minMaxLoc(result, None)
     
     if maxVal >= threshold:
-        return ( maxLoc[0]+region[0], maxLoc[1]+region[1], img.shape[0], img.shape[1] )
+        return ( maxLoc[0]+region[0], maxLoc[1]+region[1], img.shape[1], img.shape[0] )
     else:
         return None
 
@@ -113,4 +113,4 @@ def locateAllOnScreen(img, threshold=0.87, region=None):
     loc = np.where( result >= threshold )
     
     for pt in zip(*loc[::-1]):
-        yield( (region[0]+pt[0], region[1]+pt[1], img.shape[0], img.shape[1]) )
+        yield( (region[0]+pt[0], region[1]+pt[1], img.shape[1], img.shape[0]) )
