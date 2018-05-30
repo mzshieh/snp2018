@@ -15,7 +15,6 @@ def get_input():
 
     if len(tbuf)==0:
         get_input()
-        
 
 def get_str():
     global cnt
@@ -58,6 +57,11 @@ import cv2 as cv
 import numpy as np
 from pyautogui import size
 
+scale = 1
+
+def setScale( r=1 ):
+    global scale
+    scale = r
 
 def getMatchTemplate(img, region):
     # detect box
@@ -85,7 +89,11 @@ def locateOnScreen(img, threshold=0.87, region=None):
     _minVal, maxVal, _minLoc, maxLoc = cv.minMaxLoc(result, None)
     
     if maxVal >= threshold:
-        return ( maxLoc[0]+region[0], maxLoc[1]+region[1], img.shape[1], img.shape[0] )
+        return (    maxLoc[0] // scale + region[0], 
+                    maxLoc[1] // scale + region[1], 
+                    img.shape[1] // scale, 
+                    img.shape[0] // scale 
+                )
     else:
         return None
 
@@ -113,4 +121,8 @@ def locateAllOnScreen(img, threshold=0.87, region=None):
     loc = np.where( result >= threshold )
     
     for pt in zip(*loc[::-1]):
-        yield( (region[0]+pt[0], region[1]+pt[1], img.shape[1], img.shape[0]) )
+        yield( (    region[0] + pt[0] // scale, 
+                    region[1] + pt[1] // scale,
+                    img.shape[1] // scale, 
+                    img.shape[0] // scale
+                ) )
